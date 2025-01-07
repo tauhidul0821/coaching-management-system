@@ -1,10 +1,9 @@
 # Project Flow: Coaching Management System
 ## Task Description:
 The Coaching Management System uses React.js, Next.js, and Tailwind CSS, with Redux for state management. It
-features JWT authentication and role-based access control, allowing one teacher to manage all students and students to
-manage their own data. Data is stored in localStorage/IndexedDB, and the UI provides role-specific dashboards.
-Performance is optimized with lazy loading and efficient rendering, while robust testing ensures reliability. The app is
-deployable on platforms like Vercel, with secure environment management and error monitoring.
+features JWT authentication and role-based access control, allowing one teacher to manage all students and students to manage their own data. Data is stored in localStorage/IndexedDB, and the UI provides role-specific dashboards.
+Performance is optimized with lazy loading and efficient rendering, while robust testing ensures reliability. The app is deployable on platforms like Vercel, with secure environment management and error monitoring.
+
 ## 1. Project Initialization
 - Tasks:
 - Set up the project using React js, Next.js and Tailwind CSS for server-side rendering and
@@ -15,6 +14,7 @@ responsive design.
 - UI: tailwind css
 - Testing: jest, react-testing-library, cypress
 - Set up ESLint and Prettier for maintaining code quality and consistency.
+
 ## 2. Authentication & Authorization
 - Tasks:
 - Implement a sign-up process with the following rules:
@@ -47,7 +47,8 @@ responsive design.
 - Global Layout:
 - Create a reusable layout component with role-based navigation menus.
 - Include dashboard links for teachers and students.
-- Dashboard:
+
+#### Dashboard:
 - For Teacher:
 - Display a list of all students with options to view and edit their data.
 - For Students:
@@ -64,8 +65,8 @@ responsive design.
 
 ## 5. State Management
 - Tasks:
--  Create Redux slices:
--  authSlice for managing authentication and roles.
+- Create Redux slices:
+- authSlice for managing authentication and roles.
 - studentDataSlice for storing and managing student data.
 - Store application state and user data in localStorage or IndexedDB:
 - Use a structured schema for storing user roles, data, and session information.
@@ -77,7 +78,6 @@ responsive design.
 - Access all students' data and edit any student record.
 - Student:
 - Access and edit only their own data.
-
 - Add role-based UI components:
 - Show edit buttons or links based on the user's role and permission.
 - Disable or hide edit options for unauthorized users.
@@ -96,7 +96,6 @@ responsive design.
 - Use Cypress for end-to-end testing:
 - Simulate teacher actions for managing student data.
 - Simulate student actions for editing their own data.
-
 - Verify role-based restrictions and permissions.
 - Add client-side and server-side validation for form inputs.
 
@@ -118,6 +117,8 @@ responsive design.
 - Dashboard: Displays their own profile and academic data.
 - Permissions: Restricted to their own data.
 
+
+----------------- end of requirement------------------------
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
