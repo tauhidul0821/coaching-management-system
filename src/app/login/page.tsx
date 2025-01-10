@@ -40,7 +40,7 @@ const LoginForm = () => {
         <p className="mt-4 text-sm text-center text-gray-600">
         Don't have an account? 
         <Link href="/signup" 
-            className="text-blue-500 hover:underline">Sign up
+            className="text-blue-500 hover:underline"> Sign up
         </Link>
         </p>
       </div>
