@@ -21,5 +21,3 @@ const loadingPage = ({ loading }: {loading: boolean}) => {
 }
 
 export default loadingPage
-
-
