@@ -2,8 +2,12 @@
 
 import React from 'react'
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const Sidebar = () => {
+    const pathname = usePathname();
+    console.log(pathname);
+  
   return (
     <section>
         <aside className="bg-blue-600 text-white w-64 min-h-screen flex flex-col">
@@ -13,25 +17,15 @@ const Sidebar = () => {
             <nav className="flex-1 p-4">
             <ul className="space-y-4">
                 <li>
-                    <Link href="/dashboard" className="flex items-center px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700">
+                    <Link href="/dashboard" className={`${pathname === '/dashboard' ? 'bg-blue-500': ''} flex items-center px-4 py-2 text-white rounded hover:bg-blue-700`}>
                         <span>Dashboard</span>
                     </Link>
                 </li>
-                {/* <li>
-                    <Link href="/profile" className="flex items-center px-4 py-2 rounded hover:bg-blue-500">
-                        <span>My Profile</span>
-                    </Link>
-                </li> */}
                 <li>
-                    <Link href="/dashboard/students" className="flex items-center px-4 py-2 rounded hover:bg-blue-500">
+                    <Link href="/dashboard/students" className={`${pathname === '/dashboard/students' ? 'bg-blue-500': ''} flex items-center px-4 py-2 text-white rounded hover:bg-blue-700`}>
                         <span>Students</span>
                     </Link>
                 </li>
-                {/* <li>
-                    <Link href="/logout" className="flex items-center px-4 py-2 rounded hover:bg-blue-500">
-                        <span>Logout</span>
-                    </Link>
-                </li> */}
             </ul>
             </nav>
         </aside>

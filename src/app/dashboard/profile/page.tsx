@@ -4,12 +4,9 @@ import React from 'react'
 const profile = () => {
   return (
     <div className="bg-gray-100 min-h-screen">
-        <div className="bg-blue-500 text-white py-4 px-6">
-            <h1 className="text-2xl font-bold">Profile</h1>
-        </div>
         <div className="p-8">
             <div className="bg-white shadow-md rounded-lg p-6 max-w-3xl mx-auto">
-                <h2 className="text-2xl font-bold text-gray-700 mb-6">Your Profile</h2>
+                <h2 className="text-2xl font-bold text-gray-700 mb-6">My Profile</h2>
                 <form className="space-y-6">
                     <div>
                         <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
