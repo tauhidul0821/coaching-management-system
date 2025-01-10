@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Navigation -->
+    <div class="bg-blue-500 text-white py-4 px-6">
+        <h1 class="text-2xl font-bold">Student Details</h1>
+    </div>
+
+    <!-- Main Content -->
+    <div class="p-8">
+        <!-- Student Information Card -->
+        <div class="bg-white shadow-md rounded-lg p-6 max-w-3xl mx-auto">
+            <h2 class="text-2xl font-bold text-gray-700 mb-4">John Doe</h2>
+            <div class="space-y-4">
+                <div class="flex justify-between items-center">
+                    <p class="text-gray-600 font-medium">Email:</p>
+                    <p class="text-gray-700">johndoe@example.com</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <p class="text-gray-600 font-medium">Phone:</p>
+                    <p class="text-gray-700">+123 456 7890</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <p class="text-gray-600 font-medium">Address:</p>
+                    <p class="text-gray-700">123 Main Street, Cityville</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <p class="text-gray-600 font-medium">Grade:</p>
+                    <p class="text-gray-700">A+</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Academic Records Table -->
+        <div class="bg-white shadow-md rounded-lg p-6 max-w-3xl mx-auto mt-8">
+            <h3 class="text-xl font-semibold text-gray-700 mb-4">Academic Records</h3>
+            <table class="min-w-full table-auto border-collapse border border-gray-300">
+                <thead>
+                    <tr class="bg-gray-100">
+                        <th class="border border-gray-300 px-4 py-2 text-left">Subject</th>
+                        <th class="border border-gray-300 px-4 py-2 text-left">Score</th>
+                        <th class="border border-gray-300 px-4 py-2 text-left">Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">Mathematics</td>
+                        <td class="border border-gray-300 px-4 py-2">95</td>
+                        <td class="border border-gray-300 px-4 py-2">A</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">Science</td>
+                        <td class="border border-gray-300 px-4 py-2">88</td>
+                        <td class="border border-gray-300 px-4 py-2">B+</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">English</td>
+                        <td class="border border-gray-300 px-4 py-2">92</td>
+                        <td class="border border-gray-300 px-4 py-2">A</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="max-w-3xl mx-auto mt-8 flex justify-end space-x-4">
+            <button class="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600">Edit Details</button>
+            <button class="bg-red-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-red-600">Delete Student</button>
+        </div>
+    </div>
+</body>
+</html>

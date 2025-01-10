@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+  <!-- Header -->
+  <header class="bg-blue-500 text-white py-4">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Student Dashboard</h1>
+      <a href="/logout" class="text-white hover:underline">Logout</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-8">
+    <!-- Profile Section -->
+    <div class="bg-white shadow rounded-lg p-6 mb-6">
+      <h2 class="text-xl font-bold text-gray-700">My Profile</h2>
+      <div class="mt-4">
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <p class="text-sm text-gray-500">Name</p>
+            <p class="text-lg font-medium text-gray-700">John Doe</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">Email</p>
+            <p class="text-lg font-medium text-gray-700">john.doe@example.com</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">Phone</p>
+            <p class="text-lg font-medium text-gray-700">+1234567890</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">Enrollment Number</p>
+            <p class="text-lg font-medium text-gray-700">2023001</p>
+          </div>
+        </div>
+        <div class="mt-4">
+          <a 
+            href="/profile/edit" 
+            class="px-4 py-2 text-white bg-blue-500 rounded-lg shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-1">
+            Edit Profile
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Academic Data Section -->
+    <div class="bg-white shadow rounded-lg p-6">
+      <h2 class="text-xl font-bold text-gray-700">Academic Data</h2>
+      <div class="mt-4">
+        <table class="w-full border-collapse border border-gray-200">
+          <thead>
+            <tr class="bg-gray-100">
+              <th class="border border-gray-200 px-4 py-2 text-left text-sm text-gray-700">Subject</th>
+              <th class="border border-gray-200 px-4 py-2 text-left text-sm text-gray-700">Grade</th>
+              <th class="border border-gray-200 px-4 py-2 text-left text-sm text-gray-700">Remarks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-200 px-4 py-2 text-gray-700">Mathematics</td>
+              <td class="border border-gray-200 px-4 py-2 text-gray-700">A</td>
+              <td class="border border-gray-200 px-4 py-2 text-gray-700">Excellent</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 px-4 py-2 text-gray-700">Science</td>
+              <td class="border border-gray-200 px-4 py-2 text-gray-700">B</td>
+              <td class="border border-gray-200 px-4 py-2 text-gray-700">Good</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 px-4 py-2 text-gray-700">English</td>
+              <td class="border border-gray-200 px-4 py-2 text-gray-700">A+</td>
+              <td class="border border-gray-200 px-4 py-2 text-gray-700">Outstanding</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-4">
+    <div class="container mx-auto px-4 text-center">
+      <p>&copy; 2025 Coaching Management System. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

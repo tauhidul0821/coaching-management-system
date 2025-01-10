@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Sidebar Navigation -->
+    <div class="flex">
+        <aside class="w-64 bg-blue-500 text-white min-h-screen p-6">
+            <h1 class="text-2xl font-bold mb-8">Teacher Dashboard</h1>
+            <nav class="space-y-4">
+                <a href="#" class="block py-2 px-4 rounded bg-blue-600">Dashboard</a>
+                <a href="#" class="block py-2 px-4 rounded hover:bg-blue-600">Manage Students</a>
+                <a href="#" class="block py-2 px-4 rounded hover:bg-blue-600">Profile</a>
+                <a href="#" class="block py-2 px-4 rounded hover:bg-blue-600">Logout</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-8">
+            <h2 class="text-3xl font-bold text-gray-700 mb-6">Welcome, Teacher!</h2>
+            <div class="bg-white shadow-md rounded-lg p-6">
+                <h3 class="text-xl font-semibold mb-4">Student List</h3>
+                <table class="min-w-full table-auto border-collapse border border-gray-300">
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="border border-gray-300 px-4 py-2 text-left">#</th>
+                            <th class="border border-gray-300 px-4 py-2 text-left">Name</th>
+                            <th class="border border-gray-300 px-4 py-2 text-left">Email</th>
+                            <th class="border border-gray-300 px-4 py-2 text-left">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dummy Data -->
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2">1</td>
+                            <td class="border border-gray-300 px-4 py-2">John Doe</td>
+                            <td class="border border-gray-300 px-4 py-2">johndoe@example.com</td>
+                            <td class="border border-gray-300 px-4 py-2">
+                                <a href="#" class="text-blue-500 hover:underline">View</a> |
+                                <a href="#" class="text-blue-500 hover:underline">Edit</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2">2</td>
+                            <td class="border border-gray-300 px-4 py-2">Jane Smith</td>
+                            <td class="border border-gray-300 px-4 py-2">janesmith@example.com</td>
+                            <td class="border border-gray-300 px-4 py-2">
+                                <a href="#" class="text-blue-500 hover:underline">View</a> |
+                                <a href="#" class="text-blue-500 hover:underline">Edit</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2">3</td>
+                            <td class="border border-gray-300 px-4 py-2">Bob Johnson</td>
+                            <td class="border border-gray-300 px-4 py-2">bobjohnson@example.com</td>
+                            <td class="border border-gray-300 px-4 py-2">
+                                <a href="#" class="text-blue-500 hover:underline">View</a> |
+                                <a href="#" class="text-blue-500 hover:underline">Edit</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
