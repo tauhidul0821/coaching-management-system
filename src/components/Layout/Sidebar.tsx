@@ -3,11 +3,12 @@
 import React from 'react'
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { PiStudentBold } from 'react-icons/pi';
+import { FaTachometerAlt } from "react-icons/fa";
 
 const Sidebar = () => {
-    const pathname = usePathname();
-    console.log(pathname);
-  
+  const pathname = usePathname();
+
   return (
     <section>
         <aside className="bg-blue-600 text-white w-64 min-h-screen flex flex-col">
@@ -18,12 +19,12 @@ const Sidebar = () => {
             <ul className="space-y-4">
                 <li>
                     <Link href="/dashboard" className={`${pathname === '/dashboard' ? 'bg-blue-500': ''} flex items-center px-4 py-2 text-white rounded hover:bg-blue-700`}>
-                        <span>Dashboard</span>
+                         <FaTachometerAlt /><span> Dashboard</span>
                     </Link>
                 </li>
                 <li>
                     <Link href="/dashboard/students" className={`${pathname === '/dashboard/students' ? 'bg-blue-500': ''} flex items-center px-4 py-2 text-white rounded hover:bg-blue-700`}>
-                        <span>Students</span>
+                        <PiStudentBold /> <span>Students</span>
                     </Link>
                 </li>
             </ul>
