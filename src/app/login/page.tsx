@@ -2,19 +2,39 @@
 
 import React, {useState} from 'react'
 import Link from 'next/link'
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const router = useRouter();
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         const data = {
             email,
-            password
+            password,
+            redirect: false
         }
         console.log(data);
+
+        try{
+            const res = await signIn('credentials', data);
+
+            if(res?.error){
+                setError('Invalid Credentials');
+                return;
+            }
+
+            router.replace('dashboard');
+
+        }catch(err){
+            console.log(err);
+        }
     }
 
 
@@ -49,6 +69,12 @@ const LoginForm = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 ></input>
             </div>
+            
+            {error && (
+                <div className='bg-red-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-2'>
+                    {error}
+                </div>
+            )}
 
             <button 
                 type="submit" 
