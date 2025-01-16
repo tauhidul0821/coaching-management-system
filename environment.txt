@@ -1,0 +1,3 @@
+NEXT_PUBLIC_DOMAIN=http://localhost:3000
+NEXT_PUBLIC_API_DOMAIN=http://localhost:3000/api
+MONGODB_URI=mongodb+srv://USERNAME:<PASSWORD>@cluster0.rpblz.mongodb.net/coaching?retryWrites=true&w=majority&appName=Cluster0

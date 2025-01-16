@@ -1,10 +1,14 @@
-'use client';
+import React from 'react'
 import Login from "./login/page";
+import connectDB from '@/config/database'
 
-export default function Home() {
+const Home = async () => {
+  console.log('I am here...')
+  await connectDB();
   return (
     <>
       <Login />
     </>
-  );
+  )
 }
+export default Home

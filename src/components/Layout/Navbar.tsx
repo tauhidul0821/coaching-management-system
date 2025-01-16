@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import React from 'react'
+import { signOut } from "next-auth/react";
 
 const Navbar = () => {
   return (
@@ -25,11 +26,11 @@ const Navbar = () => {
             className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
             Profile
           </Link>
-          <Link
-            href="/logout" 
+          <button
+            onClick={() => signOut()} 
             className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
             Logout
-          </Link>
+          </button>
         </div>
       </div>
     </header>

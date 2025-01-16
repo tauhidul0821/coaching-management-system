@@ -9,19 +9,45 @@ const SignUpForm = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [role, setRole] = useState('');
+    const [error, setError] =useState('');
 
     
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
+        if(!name || !email || !password || !role){
+            setError('All fields are necessary.');
+            return;
+        }
 
         const data = {
             name,
             email,
             password,
-            confirmPassword,
             role
         }
-        console.log(data);
+
+        console.log(data)
+
+        try{
+            const res = await fetch('api/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if(res.ok){
+                console.log('NEED TO DO RESET FORM');
+                const form = e.target as HTMLFormElement;
+                form.reset();
+            }
+
+
+        }catch(err){
+            console.log('Error during registration: ', err);
+        }
     }
 
 
@@ -69,10 +95,17 @@ const SignUpForm = () => {
                     onChange={(e) => setRole(e.target.value)}
                     className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
                     <option value="">Select Role</option>
+                    <option value="Admin">Admin</option>
                     <option value="teacher">Teacher</option>
                     <option value="student">Student</option>
                 </select>
             </div>
+
+            {error && (
+                <div className='bg-red-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-2'>
+                    {error}
+                </div>
+            )}
 
             <div>
                 <button type="submit"

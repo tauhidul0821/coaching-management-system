@@ -2,6 +2,8 @@
 
 import React, {useState} from 'react'
 import Link from 'next/link'
+import { signOut } from "next-auth/react";
+
 
 const Header = () => {
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
@@ -24,12 +26,11 @@ const Header = () => {
                             className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
                             Profile
                         </Link>
-                        <Link
-                            href="/logout"
-                            onClick={() => setIsProfileMenuOpen(false)}
+                        <button
+                            onClick={() => signOut()} 
                             className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
                             Logout
-                        </Link>
+                        </button>
                     </div>
                 )}
             </div>
