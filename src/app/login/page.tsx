@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast';
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
@@ -12,6 +14,8 @@ const LoginForm = () => {
     const [buttonDisabled, setButtonDisabled] = useState(true);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+
 
     const router = useRouter();
 
@@ -77,18 +81,34 @@ const LoginForm = () => {
                 ></input>
             </div>
 
-            <div className="mb-4">
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
-                <input 
-                type="password" 
-                id="password" 
-                placeholder="Enter your password" 
-                className="w-full px-4 py-2 mt-1 text-gray-700 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" 
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                ></input>
+            <div className="mb-4 relative">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                Password
+              </label>
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  placeholder="Enter your password"
+                  className="w-full px-4 py-2 mt-1 text-gray-700 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute inset-y-0 right-3 flex items-center text-gray-500"
+                >
+                  {showPassword ? (
+                    <FaEye />
+                  ) : (<FaEyeSlash />)}
+                </button>
+              </div>
             </div>
+
+
+    
             
             {error && (
                 <div className='bg-red-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-2'>
@@ -111,7 +131,7 @@ const LoginForm = () => {
         </p>
       </div>
       </div>
-  )
+);
 }
 
 export default LoginForm

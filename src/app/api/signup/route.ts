@@ -15,10 +15,14 @@ export async function POST(req: NextRequest) {
             password: hashedPassword,
             role
         }
+        
+        // check if user already exists
+        const userExists = await User.findOne({email})
+        if(userExists){
+            return NextResponse.json({message: 'User already exists'}, {status: 400});
+        }
 
-        console.log(payload);
         await User.create(payload);
-
 
         return NextResponse.json({message: 'User registered.'}, {status: 201})
     }catch(error){

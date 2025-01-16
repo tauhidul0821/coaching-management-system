@@ -2,13 +2,14 @@
 
 import React, {useState} from 'react'
 import Link from 'next/link'
-
 import { toast } from 'react-hot-toast';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
 const Header = () => {
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+  const [profile, setProfile] = useState({ name: "", role: "" });
+
   const router = useRouter();
 
   const logout = async () => {
@@ -42,7 +43,7 @@ const Header = () => {
                         <button
                             onClick={() => logout()} 
                             className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                            Logout 1111
+                            Logout
                         </button>
                     </div>
                 )}
