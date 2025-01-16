@@ -1,49 +1,69 @@
 'use client';
 
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Link from 'next/link'
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { toast } from 'react-hot-toast';
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [buttonDisabled, setButtonDisabled] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
     const router = useRouter();
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const onLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         const data = {
             email,
-            password,
-            redirect: false
+            password
         }
+        
+        if(!email || !password){
+            setError('All fields are necessary.');
+            return;
+        }
+
         console.log(data);
 
         try{
-            const res = await signIn('credentials', data);
+            setLoading(true);
 
-            if(res?.error){
-                setError('Invalid Credentials');
-                return;
+            const res = await fetch('api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if(res.ok){
+                router.push('/dashboard');
+                toast.success('Login successful.');
             }
 
-            router.replace('dashboard');
+
+
 
         }catch(err){
-            console.log(err);
+            console.log('Error during login: ', err);
+            toast.error('An error occurred during login.');
+
+        }finally{
+            setLoading(false);
         }
     }
-
 
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
     <div className="w-full max-w-sm bg-white rounded-lg shadow-md p-6">
         <h2 className="text-2xl font-bold text-gray-700 text-center">Login</h2>
-        <form className="mt-6" onSubmit={handleSubmit}>
+        <form className="mt-6" onSubmit={onLogin}>
             <div className="mb-4">
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
                 <input 

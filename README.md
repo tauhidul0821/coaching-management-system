@@ -1,3 +1,36 @@
+# SETUP
+### step 1: Go to coaching-management-system folder and install package using this command
+```bash
+npm i
+```
+
+### step 2:  create a mongo url from mongoDB atlas
+
+```bash
+mongodb+srv://mongoUserName:mongoPassword@cluster0.rpblz.mongodb.net/coaching?retryWrites=true&w=majority&appName=Cluster0
+```
+
+### step 3: add netword access in mongodb atlas 
+set IP Address 0.0.0.0/0 for access other location
+
+
+### step 4: create a file name: .env in project root folder 
+- in .env file put those code and replace mongoUserName and mongoPassword
+
+```bash
+NEXT_PUBLIC_DOMAIN=http://localhost:3000
+NEXT_PUBLIC_API_DOMAIN=http://localhost:3000/api
+MONGODB_URI=mongodb+srv://mongoUserName:mongoPassword@cluster0.rpblz.mongodb.net/coaching?retryWrites=true&w=majority&appName=Cluster0
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_URL_INTERNAL=http://localhost:3000
+NEXTAUTH_SECRET=your_secret_key
+```
+### step 5: project run by this command 
+
+```bash
+npm run dev
+```
+
 # Project Flow: Coaching Management System
 ## Task Description:
 The Coaching Management System uses React.js, Next.js, and Tailwind CSS, with Redux for state management. It

@@ -2,8 +2,13 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { toast } from 'react-hot-toast';
+
 
 const SignUpForm = () => {
+
+    const router = useRouter();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -41,8 +46,13 @@ const SignUpForm = () => {
             if(res.ok){
                 console.log('NEED TO DO RESET FORM');
                 const form = e.target as HTMLFormElement;
-                form.reset();
+                // form.reset();
+                
+                router.push('/login');
+                toast.success('Registration successful. Please login to continue.');
             }
+
+
 
 
         }catch(err){
