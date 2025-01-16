@@ -2,12 +2,25 @@
 
 import React, {useState} from 'react'
 import Link from 'next/link'
-import { signOut } from "next-auth/react";
 
+import { toast } from 'react-hot-toast';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 const Header = () => {
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
-  
+  const router = useRouter();
+
+  const logout = async () => {
+    try {
+      await axios.get('/api/logout');
+      toast.success('User logged out successfully');
+      router.push('/login');
+    } catch (error: any) {
+      console.error(error) 
+    }
+  }
+
   return (
     <section>
         <header className="bg-white shadow-sm py-4 px-6 flex justify-between items-center">
@@ -27,9 +40,9 @@ const Header = () => {
                             Profile
                         </Link>
                         <button
-                            onClick={() => signOut()} 
+                            onClick={() => logout()} 
                             className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                            Logout
+                            Logout 1111
                         </button>
                     </div>
                 )}
