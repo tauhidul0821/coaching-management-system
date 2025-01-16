@@ -31,6 +31,23 @@ NEXTAUTH_SECRET=your_secret_key
 npm run dev
 ```
 
+
+### Only logged in user can visit dashboard, other user can visit /login and /signup and default route '/' path
+
+## Public route : who are not logged in.
+```bash
+/
+/login
+/signup
+``` 
+
+
+## private route: who are logged in
+```bash
+/dashboard
+``` 
+
+
 # Project Flow: Coaching Management System
 ## Task Description:
 The Coaching Management System uses React.js, Next.js, and Tailwind CSS, with Redux for state management. It
