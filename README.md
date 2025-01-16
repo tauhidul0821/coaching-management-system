@@ -13,6 +13,8 @@ mongodb+srv://mongoUserName:mongoPassword@cluster0.rpblz.mongodb.net/coaching?re
 ### step 3: add netword access in mongodb atlas 
 set IP Address 0.0.0.0/0 for access other location
 
+![Image](https://github.com/user-attachments/assets/08320477-0c91-4335-bb52-979ed63b599b)
+
 
 ### step 4: create a file name: .env in project root folder 
 - in .env file put those code and replace mongoUserName and mongoPassword
