@@ -4,6 +4,9 @@ import React, { useState } from 'react'
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast';
+import { FaEye } from "react-icons/fa";
+import axios from 'axios';
+import { FaEyeSlash } from "react-icons/fa";
 
 
 const SignUpForm = () => {
@@ -15,6 +18,8 @@ const SignUpForm = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [role, setRole] = useState('');
     const [error, setError] =useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -23,6 +28,9 @@ const SignUpForm = () => {
         if(!name || !email || !password || !role){
             setError('All fields are necessary.');
             return;
+        }
+        if (password !== confirmPassword) {
+          setError("Passwords do not match.");
         }
 
         const data = {
@@ -34,28 +42,14 @@ const SignUpForm = () => {
 
         console.log(data)
 
-        try{
-            const res = await fetch('api/signup', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
-
-            if(res.ok){
-                console.log('NEED TO DO RESET FORM');
-                const form = e.target as HTMLFormElement;
-                // form.reset();
-                
+        try{          
+          const res = await axios.post('/api/signup', data);
+            if(res.status === 201){
                 router.push('/login');
                 toast.success('Registration successful. Please login to continue.');
             }
-
-
-
-
-        }catch(err){
+        }catch(err: any){
+            setError(err.response.data.message);
             console.log('Error during registration: ', err);
         }
     }
@@ -71,41 +65,79 @@ const SignUpForm = () => {
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700">Full Name</label>
                 <input type="text" id="name" name="name" required
                     value={name}
+                              placeholder="Enter your full name"
                     onChange={(e) => setName(e.target.value)}
-                    className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                    className="w-full px-4 py-2 mt-1 text-gray-700 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                     />
             </div>
 
             <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email Address</label>
                 <input type="email" id="email" name="email" required
                     value={email}
+                              placeholder="Enter your email address"
                     onChange={(e) => setEmail(e.target.value)}
-                    className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
-            </div>
-            <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
-                <input type="password" id="password" name="password" required
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                    className="w-full px-4 py-2 mt-1 text-gray-700 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                    />
             </div>
 
-            <div>
-                <label htmlFor="confirm-password" className="block text-sm font-medium text-gray-700">Confirm Password</label>
-                <input type="password" id="confirm-password" name="confirm-password" required
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
-            </div>
+            
+                        <div className="mb-4 relative">
+                          <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                            Password
+                          </label>
+                          <div className="relative">
+                            <input
+                              type={showPassword ? "text" : "password"}
+                              id="password"
+                              placeholder="Enter your password"
+                              className="w-full px-4 py-2 mt-1 text-gray-700 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                              required
+                              value={password}
+                              onChange={(e) => setPassword(e.target.value)}
+                            />
+                            <button
+                              type="button"
+                              onClick={() => setShowPassword(!showPassword)}
+                              className="absolute inset-y-0 right-3 flex items-center text-gray-500"
+                            >
+                              {showPassword ? (<FaEye />) : (<FaEyeSlash />)}
+                            </button>
+                          </div>
+                        </div>
+            
+            <div className="mb-4 relative">
+                          <label htmlFor="confirm-password" className="block text-sm font-medium text-gray-700">
+                            Confirm Password
+                          </label>
+                          <div className="relative">
+                            <input
+                              type={showConfirmPassword ? "text" : "password"}
+                              id="confirm-password"
+                              name="confirm-password"
+                              placeholder="Enter your confirm password"
+                              className="w-full px-4 py-2 mt-1 text-gray-700 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                              required
+                              value={confirmPassword}
+                              onChange={(e) => setConfirmPassword(e.target.value)}
+                            />
+                            <button
+                              type="button"
+                              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                              className="absolute inset-y-0 right-3 flex items-center text-gray-500"
+                            >
+                              {showConfirmPassword ? ( <FaEye /> ) : (<FaEyeSlash />)}
+                            </button>
+                          </div>
+                        </div>
 
             <div>
                 <label htmlFor="role" className="block text-sm font-medium text-gray-700">Register As</label>
                 <select id="role" name="role" required
                     value={role}
                     onChange={(e) => setRole(e.target.value)}
-                    className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    className="w-full px-4 py-2 mt-1 text-gray-700 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent">
                     <option value="">Select Role</option>
-                    <option value="Admin">Admin</option>
                     <option value="teacher">Teacher</option>
                     <option value="student">Student</option>
                 </select>
