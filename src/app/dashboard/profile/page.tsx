@@ -7,7 +7,6 @@ const profile = () => {
   const getUserDetails = async () => {
     try {
       const response: any = await axios.get('/api/me');
-      console.log('FFF --> ', response);
       setProfile(response.data.data);
     } catch (error: any) {
       console.error(error);
