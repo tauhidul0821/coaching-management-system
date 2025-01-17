@@ -1,9 +1,8 @@
+'use client';
 import React from 'react';
 import Login from './login/page';
-import connectDB from '@/config/database';
 
-const Home = async () => {
-  await connectDB();
+const Home = () => {
   return (
     <>
       <Login />

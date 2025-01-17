@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
-import User from '../../models/users';
+import User from '@/models/users';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import connectDB from '@/config/database';
 
-export async function POST(req: NextRequest) {
+export const POST = async (req: NextRequest) => {
   try {
+    await connectDB();
     const { email, password } = await req.json();
 
     // check if user exists
@@ -41,7 +43,6 @@ export async function POST(req: NextRequest) {
 
     return response;
   } catch (error: any) {
-    console.log(error);
     return NextResponse.json({ message: 'An error occurred while login the user', error }, { status: 500 });
   }
-}
+};
