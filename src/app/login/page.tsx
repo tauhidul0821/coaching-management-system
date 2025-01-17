@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { toast } from 'react-hot-toast';
+import { toast } from 'react-toastify';
 import { FaEye } from 'react-icons/fa';
 import { FaEyeSlash } from 'react-icons/fa';
 import axios from 'axios';
@@ -35,9 +35,8 @@ const LoginForm = () => {
     try {
       setLoading(true);
       const res = await axios.post('/api/login', data);
-      if (res.status === 201) {
+      if (res.status === 200) {
         router.push('/dashboard');
-        toast.success('Login successful.');
       }
     } catch (err: any) {
       toast.error('An error occurred during login.', err);

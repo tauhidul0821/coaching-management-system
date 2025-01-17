@@ -3,7 +3,7 @@ import User from '@/models/users';
 import bcrypt from 'bcryptjs';
 import connectDB from '@/config/database';
 
-export async function POST(req: NextRequest) {
+export const POST = async (req: NextRequest) => {
   try {
     await connectDB();
 
@@ -30,4 +30,4 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     return NextResponse.json({ message: 'An error occurred while signup the user', error }, { status: 500 });
   }
-}
+};

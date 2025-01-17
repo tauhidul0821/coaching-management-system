@@ -1,7 +1,23 @@
 'use client';
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 const profile = () => {
+  const [profile, setProfile] = useState({ name: '', role: '', email: '' });
+
+  const getUserDetails = async () => {
+    try {
+      const response: any = await axios.get('/api/me');
+      console.log('FFF --> ', response);
+      setProfile(response.data.data);
+    } catch (error: any) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getUserDetails();
+  }, []);
+
   return (
     <div className="bg-gray-100 min-h-screen">
       <div className="p-8">

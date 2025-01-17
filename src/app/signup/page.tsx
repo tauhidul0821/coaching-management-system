@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { toast } from 'react-hot-toast';
+import { toast } from 'react-toastify';
 import { FaEye } from 'react-icons/fa';
 import axios from 'axios';
 import { FaEyeSlash } from 'react-icons/fa';
@@ -27,7 +27,8 @@ const SignUpForm = () => {
       return;
     }
     if (password !== confirmPassword) {
-      setError('Passwords do not match.');
+      setError('Passwords not matched.');
+      return;
     }
 
     const data = {

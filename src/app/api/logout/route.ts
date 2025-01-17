@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import connectDB from '@/config/database';
 
-export async function GET() {
+export const GET = async (req: NextRequest) => {
   try {
     await connectDB();
 
@@ -16,4 +16,4 @@ export async function GET() {
   } catch (error: any) {
     return NextResponse.json({ message: 'An error occurred while logout the user', error }, { status: 500 });
   }
-}
+};

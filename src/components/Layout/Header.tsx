@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { toast } from 'react-hot-toast';
+import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
@@ -15,7 +15,6 @@ const Header = () => {
   const getUserDetails = async () => {
     try {
       const response: any = await axios.get('/api/me');
-      console.log('FFF --> ', response);
       setProfile(response.data.data);
     } catch (error: any) {
       console.error(error);
@@ -29,7 +28,6 @@ const Header = () => {
   const logout = async () => {
     try {
       await axios.get('/api/logout');
-      toast.success('User logged out successfully');
       router.push('/login');
     } catch (error: any) {
       console.error(error);

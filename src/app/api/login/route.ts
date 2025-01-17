@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import connectDB from '@/config/database';
 
-export async function POST(req: NextRequest) {
+export const POST = async (req: NextRequest) => {
   try {
     await connectDB();
     const { email, password } = await req.json();
@@ -45,4 +45,4 @@ export async function POST(req: NextRequest) {
   } catch (error: any) {
     return NextResponse.json({ message: 'An error occurred while login the user', error }, { status: 500 });
   }
-}
+};
