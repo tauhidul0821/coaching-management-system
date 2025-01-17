@@ -37,8 +37,8 @@ const Sidebar = () => {
             </li>
             <li>
               <Link
-                href="/dashboard/students"
-                className={`${pathname === '/dashboard/students' ? 'bg-blue-500' : ''} flex items-center px-4 py-2 text-white rounded hover:bg-blue-700`}
+                href="/dashboard/teachers/students"
+                className={`${pathname === '/dashboard/teachers/students' ? 'bg-blue-500' : ''} flex items-center px-4 py-2 text-white rounded hover:bg-blue-700`}
               >
                 <PiStudentBold /> <span> Students</span>
               </Link>

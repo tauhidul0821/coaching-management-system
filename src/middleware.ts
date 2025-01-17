@@ -19,7 +19,7 @@ export function middleware(request: NextRequest) {
   }
 
   // Only For Teacher
-  if (path === '/dashboard/teachers/allCourses') {
+  if (path.includes('/dashboard/teachers/')) {
     console.log('I am teacher');
 
     if (decodedToken?.role !== 'teacher') {
@@ -28,7 +28,7 @@ export function middleware(request: NextRequest) {
   }
 
   // Only For Student
-  if (path === '/dashboard/students/exam') {
+  if (path.includes('/dashboard/students/')) {
     console.log('I am student');
     if (decodedToken?.role !== 'student') {
       return NextResponse.redirect(new URL('/dashboard/403', request.nextUrl));
@@ -38,5 +38,5 @@ export function middleware(request: NextRequest) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ['/', '/login', '/signup', '/dashboard', '/dashboard/teachers/allCourses', '/dashboard/students/exam'],
+  matcher: ['/', '/login', '/signup', '/dashboard', '/dashboard/teachers/:page*', '/dashboard/students/:page*'],
 };
