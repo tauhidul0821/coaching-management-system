@@ -37,8 +37,6 @@ const SignUpForm = () => {
       role,
     };
 
-    console.log(data);
-
     try {
       const res = await axios.post('/api/signup', data);
       if (res.status === 201) {
@@ -47,7 +45,6 @@ const SignUpForm = () => {
       }
     } catch (err: any) {
       setError(err.response.data.message);
-      console.log('Error during registration: ', err);
     }
   };
 

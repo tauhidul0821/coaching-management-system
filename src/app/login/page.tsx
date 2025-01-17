@@ -31,8 +31,6 @@ const LoginForm = () => {
       return;
     }
 
-    console.log(data);
-
     try {
       setLoading(true);
 
@@ -48,9 +46,8 @@ const LoginForm = () => {
         router.push('/dashboard');
         toast.success('Login successful.');
       }
-    } catch (err) {
-      console.log('Error during login: ', err);
-      toast.error('An error occurred during login.');
+    } catch (err: any) {
+      toast.error('An error occurred during login.', err);
     } finally {
       setLoading(false);
     }

@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
+import connectDB from '@/config/database';
 
 export async function GET() {
   try {
+    await connectDB();
+
     const response = NextResponse.json({
       message: 'User logged out successfully',
       success: true,
