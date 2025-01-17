@@ -18,10 +18,7 @@ export async function POST(req: NextRequest) {
     // check if user already exists
     const userExists = await User.findOne({ email });
     if (userExists) {
-      return NextResponse.json(
-        { message: 'User already exists' },
-        { status: 400 },
-      );
+      return NextResponse.json({ message: 'User already exists' }, { status: 400 });
     }
 
     await User.create(payload);
@@ -29,9 +26,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: 'User registered.' }, { status: 201 });
   } catch (error) {
     console.log(error);
-    return NextResponse.json(
-      { message: 'An error occurred while signup the user', error },
-      { status: 500 },
-    );
+    return NextResponse.json({ message: 'An error occurred while signup the user', error }, { status: 500 });
   }
 }

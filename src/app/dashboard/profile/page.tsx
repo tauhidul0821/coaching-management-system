@@ -9,10 +9,7 @@ const profile = () => {
           <h2 className="text-2xl font-bold text-gray-700 mb-6">My Profile</h2>
           <form className="space-y-6">
             <div>
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                 Name
               </label>
               <input
@@ -24,10 +21,7 @@ const profile = () => {
               ></input>
             </div>
             <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 Email
               </label>
               <input
@@ -39,10 +33,7 @@ const profile = () => {
               ></input>
             </div>
             <div>
-              <label
-                htmlFor="phone"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
                 Phone
               </label>
               <input
@@ -54,10 +45,7 @@ const profile = () => {
               ></input>
             </div>
             <div>
-              <label
-                htmlFor="address"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="address" className="block text-sm font-medium text-gray-700">
                 Address
               </label>
               <input
@@ -68,10 +56,7 @@ const profile = () => {
                 defaultValue="123 Main Street, Cityville"
               ></input>
             </div>
-            <button
-              type="submit"
-              className="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600"
-            >
+            <button type="submit" className="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600">
               Update Profile
             </button>
           </form>
