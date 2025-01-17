@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast';
 import { FaEye } from 'react-icons/fa';
 import { FaEyeSlash } from 'react-icons/fa';
+import axios from 'axios';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -33,16 +34,8 @@ const LoginForm = () => {
 
     try {
       setLoading(true);
-
-      const res = await fetch('api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (res.ok) {
+      const res = await axios.post('/api/login', data);
+      if (res.status === 201) {
         router.push('/dashboard');
         toast.success('Login successful.');
       }
