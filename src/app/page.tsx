@@ -1,6 +1,6 @@
-import React from 'react'
-import Login from "./login/page";
-import connectDB from '@/config/database'
+import React from 'react';
+import Login from './login/page';
+import connectDB from '@/config/database';
 
 const Home = async () => {
   await connectDB();
@@ -8,6 +8,6 @@ const Home = async () => {
     <>
       <Login />
     </>
-  )
-}
-export default Home
+  );
+};
+export default Home;
