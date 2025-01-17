@@ -20,8 +20,6 @@ export function middleware(request: NextRequest) {
 
   // Only For Teacher
   if (path.includes('/dashboard/teachers/')) {
-    console.log('I am teacher');
-
     if (decodedToken?.role !== 'teacher') {
       return NextResponse.redirect(new URL('/dashboard/403', request.nextUrl));
     }
@@ -29,7 +27,6 @@ export function middleware(request: NextRequest) {
 
   // Only For Student
   if (path.includes('/dashboard/students/')) {
-    console.log('I am student');
     if (decodedToken?.role !== 'student') {
       return NextResponse.redirect(new URL('/dashboard/403', request.nextUrl));
     }

@@ -2,28 +2,28 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import { IProfile } from '@/types/user';
 
-const Header = () => {
+const Header = ({ profileInfo }: { profileInfo: IProfile }) => {
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const [profile, setProfile] = useState({ name: '', role: '', email: '' });
 
   const router = useRouter();
 
-  const getUserDetails = async () => {
-    try {
-      const response: any = await axios.get('/api/me');
-      setProfile(response.data.data);
-    } catch (error: any) {
-      console.error(error);
-    }
-  };
+  // const getUserDetails = async () => {
+  //   try {
+  //     const data: any = await localStorage.getItem('profile');
+  //     setProfile(data);
+  //   } catch (error: any) {
+  //     console.error(error);
+  //   }
+  // };
 
-  useEffect(() => {
-    getUserDetails();
-  }, []);
+  // useEffect(() => {
+  //   getUserDetails();
+  // }, []);
 
   const logout = async () => {
     try {
@@ -45,7 +45,7 @@ const Header = () => {
             className=" relative flex items-center space-x-2"
             onClick={() => setIsProfileMenuOpen((prev) => !prev)}
           >
-            <span className="hidden sm:block font-medium text-gray-700">{profile ? profile?.name : 'Jhon Do'}</span>
+            <span className="hidden sm:block font-medium text-gray-700">{profileInfo ? profileInfo?.name : ''}</span>
             <img src="https://via.placeholder.com/40" alt="Avatar" className="w-10 h-10 rounded-full" />
           </button>
           {isProfileMenuOpen && (
