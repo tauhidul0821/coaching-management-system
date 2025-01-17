@@ -46,8 +46,8 @@ const Sidebar = () => {
 
             <li>
               <Link
-                href="/dashboard/all-courses"
-                className={`${pathname === '/dashboard/all-courses' ? 'bg-blue-500' : ''} flex items-center px-4 py-2 text-white rounded hover:bg-blue-700`}
+                href="/dashboard/teachers/allCourses"
+                className={`${pathname === '/dashboard/teachers/allCourses' ? 'bg-blue-500' : ''} flex items-center px-4 py-2 text-white rounded hover:bg-blue-700`}
               >
                 <FaBook /> <span> All Courses</span>
               </Link>
@@ -55,10 +55,28 @@ const Sidebar = () => {
 
             <li>
               <Link
-                href="/dashboard/my-courses"
-                className={`${pathname === '/dashboard/my-courses' ? 'bg-blue-500' : ''} flex items-center px-4 py-2 text-white rounded hover:bg-blue-700`}
+                href="/dashboard/students/myCourses"
+                className={`${pathname === '/dashboard/students/myCourses' ? 'bg-blue-500' : ''} flex items-center px-4 py-2 text-white rounded hover:bg-blue-700`}
               >
                 <FaBookReader /> <span> My Course</span>
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                href="/dashboard/students/quiz"
+                className={`${pathname === '/dashboard/students/quiz' ? 'bg-blue-500' : ''} flex items-center px-4 py-2 text-white rounded hover:bg-blue-700`}
+              >
+                <FaBookReader /> <span> Quiz</span>
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                href="/dashboard/students/exam"
+                className={`${pathname === '/dashboard/students/exam' ? 'bg-blue-500' : ''} flex items-center px-4 py-2 text-white rounded hover:bg-blue-700`}
+              >
+                <FaBookReader /> <span> Exam</span>
               </Link>
             </li>
           </ul>
