@@ -27,7 +27,13 @@ NEXTAUTH_URL=http://localhost:3000
 NEXTAUTH_URL_INTERNAL=http://localhost:3000
 NEXTAUTH_SECRET=your_secret_key
 ```
-### step 5: project run by this command 
+
+### step 5: create secret key use this command or write any string or number without space
+```bash
+openssl rand -base64 32
+```
+
+### step 6: project run by this command 
 
 ```bash
 npm run dev
@@ -37,6 +43,7 @@ npm run dev
 ### Only logged in user can visit dashboard, other user can visit /login and /signup and default route '/' path
 
 ## Public route : who are not logged in.
+
 ```bash
 /
 /login
@@ -47,7 +54,17 @@ npm run dev
 ## private route: who are logged in
 ```bash
 /dashboard
-``` 
+```
+
+## private route: for student, who are logged in as a student 
+```bash
+/dashboard/students
+```
+
+## private route: for teacher, who are logged in as a teacher
+```bash
+/dashboard/teachers
+```
 
 
 # Project Flow: Coaching Management System
