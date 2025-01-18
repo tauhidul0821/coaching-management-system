@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Dashboard - My Course</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 text-gray-800">
+    <!-- Navbar -->
+    <nav class="bg-blue-600 p-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-white text-xl font-bold">Coaching Management System</h1>
+        <ul class="flex space-x-4">
+          <li><a href="#" class="text-white hover:underline">Dashboard</a></li>
+          <li><a href="#" class="text-white hover:underline font-semibold">My Course</a></li>
+          <li><a href="#" class="text-white hover:underline">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container mx-auto py-8">
+      <h2 class="text-2xl font-bold mb-6">My Courses</h2>
+
+      <!-- Courses Section -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Single Course Card -->
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+          <div class="bg-blue-600 text-white p-4">
+            <h3 class="text-lg font-semibold">Course Title 1</h3>
+            <p class="text-sm">Instructor: John Doe</p>
+          </div>
+          <div class="p-4">
+            <p class="text-gray-600">
+              Description: This is a basic course on web development, covering HTML, CSS, and JavaScript.
+            </p>
+            <p class="mt-2 text-sm font-bold text-gray-800">Status: Completed</p>
+            <p class="mt-1 text-sm text-gray-600">Grade: A+</p>
+          </div>
+        </div>
+
+        <!-- Repeat the Course Card -->
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+          <div class="bg-blue-600 text-white p-4">
+            <h3 class="text-lg font-semibold">Course Title 2</h3>
+            <p class="text-sm">Instructor: Jane Smith</p>
+          </div>
+          <div class="p-4">
+            <p class="text-gray-600">
+              Description: This is an advanced course on React.js and modern front-end frameworks.
+            </p>
+            <p class="mt-2 text-sm font-bold text-gray-800">Status: In Progress</p>
+            <p class="mt-1 text-sm text-gray-600">Grade: -</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Section -->
+      <h2 class="text-2xl font-bold mt-12 mb-6">My Results</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full table-auto border-collapse bg-white shadow-md rounded-lg overflow-hidden">
+          <thead class="bg-blue-600 text-white">
+            <tr>
+              <th class="px-4 py-2">Course</th>
+              <th class="px-4 py-2">Instructor</th>
+              <th class="px-4 py-2">Grade</th>
+              <th class="px-4 py-2">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="text-gray-700 border-b">
+              <td class="px-4 py-2">Course Title 1</td>
+              <td class="px-4 py-2">John Doe</td>
+              <td class="px-4 py-2">A+</td>
+              <td class="px-4 py-2">Completed</td>
+            </tr>
+            <tr class="text-gray-700 border-b">
+              <td class="px-4 py-2">Course Title 2</td>
+              <td class="px-4 py-2">Jane Smith</td>
+              <td class="px-4 py-2">-</td>
+              <td class="px-4 py-2">In Progress</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

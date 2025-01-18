@@ -1,24 +1,33 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Spinner from '@/components/Spinner';
+
 const profile = () => {
+  const [isPageLoading, setIsPageLoading] = useState(true);
   const [profile, setProfile] = useState({ name: '', role: '', email: '' });
 
   const getUserDetails = async () => {
     try {
+      setIsPageLoading(true);
       const response: any = await axios.get('/api/me');
       setProfile(response.data.data);
     } catch (error: any) {
       console.error(error);
+    } finally {
+      setIsPageLoading(false);
     }
   };
 
   useEffect(() => {
     getUserDetails();
+    console.log('profile', profile);
   }, []);
 
+  if (isPageLoading) return <Spinner loading={isPageLoading} />;
+
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="bg-gray-100">
       <div className="p-8">
         <div className="bg-white shadow-md rounded-lg p-6 max-w-3xl mx-auto">
           <h2 className="text-2xl font-bold text-gray-700 mb-6">My Profile</h2>
@@ -31,8 +40,8 @@ const profile = () => {
                 type="text"
                 id="name"
                 name="name"
+                value={profile.name}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                defaultValue="John Doe"
               ></input>
             </div>
             <div>
@@ -43,32 +52,9 @@ const profile = () => {
                 type="email"
                 id="email"
                 name="email"
+                value={profile.email}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                defaultValue="johndoe@example.com"
-              ></input>
-            </div>
-            <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-                Phone
-              </label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                defaultValue="+123 456 7890"
-              ></input>
-            </div>
-            <div>
-              <label htmlFor="address" className="block text-sm font-medium text-gray-700">
-                Address
-              </label>
-              <input
-                type="text"
-                id="address"
-                name="address"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                defaultValue="123 Main Street, Cityville"
+                defaultValue="{profile.email}"
               ></input>
             </div>
             <button type="submit" className="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600">
