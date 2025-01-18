@@ -8,27 +8,16 @@ import { IProfile } from '@/types/user';
 
 const Header = ({ profileInfo }: { profileInfo: IProfile }) => {
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
-  const [profile, setProfile] = useState({ name: '', role: '', email: '' });
+  const profileMenuClass = 'block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors';
 
   const router = useRouter();
 
-  // const getUserDetails = async () => {
-  //   try {
-  //     const data: any = await localStorage.getItem('profile');
-  //     setProfile(data);
-  //   } catch (error: any) {
-  //     console.error(error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getUserDetails();
-  // }, []);
-
   const logout = async () => {
     try {
-      await axios.get('/api/logout');
-      router.push('/login');
+      const res = await axios.get('/api/logout');
+      if (res.status === 200) {
+        router.push('/login');
+      }
     } catch (error: any) {
       console.error(error);
     }
@@ -38,7 +27,6 @@ const Header = ({ profileInfo }: { profileInfo: IProfile }) => {
     <section>
       <header className="bg-white shadow-sm py-4 px-6 flex justify-between items-center">
         <h2 className="text-xl font-bold text-gray-700">Dashboard</h2>
-        {/* <!-- Profile Section --> */}
         <div className="relative">
           <button
             type="button"
@@ -53,14 +41,10 @@ const Header = ({ profileInfo }: { profileInfo: IProfile }) => {
               id="profileDropdown"
               className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg"
             >
-              <Link
-                href="/dashboard/profile"
-                onClick={() => setIsProfileMenuOpen(false)}
-                className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
-              >
+              <Link href="/dashboard/profile" onClick={() => setIsProfileMenuOpen(false)} className={profileMenuClass}>
                 Profile
               </Link>
-              <button onClick={() => logout()} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+              <button onClick={() => logout()} className={`${profileMenuClass} w-full text-left`}>
                 Logout
               </button>
             </div>
