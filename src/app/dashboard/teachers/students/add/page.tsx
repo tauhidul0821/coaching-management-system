@@ -8,26 +8,31 @@ const AddStudent = () => {
   const router = useRouter();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [grade, setGrade] = useState('');
+  const [subject, setSubject] = useState('');
   const [error, setError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!name || !email) {
-      setError('All fields are necessary.');
+      setError('Name and email are necessary.');
       return;
     }
 
     const data = {
       name,
       email,
+      grade,
+      subject,
     };
+    console.log('before posting :- ', data);
 
     try {
       const res = await axios.post('/api/student', data);
       if (res.status === 201) {
         router.push('/dashboard/teachers/students');
-        toast.success('Registration successful. Please login to continue.');
+        toast.success('Student Added successful.');
       }
     } catch (err: any) {
       setError(err.response.data.message);
@@ -79,6 +84,8 @@ const AddStudent = () => {
             <select
               id="class"
               name="class"
+              onChange={(e) => setGrade(e.target.value)}
+              value={grade}
               className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
               <option value="" disabled selected>
@@ -101,6 +108,8 @@ const AddStudent = () => {
             <select
               id="subject"
               name="subject"
+              onChange={(e) => setSubject(e.target.value)}
+              value={subject}
               className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
               <option value="" disabled selected>

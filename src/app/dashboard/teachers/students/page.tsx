@@ -13,6 +13,7 @@ const StudentList = () => {
     const getAllStudents = async () => {
       try {
         const response: any = await axios.get('/api/student');
+        console.log(response.data.data);
         setStudents(response.data.data);
       } catch (error: any) {
         console.error(error);

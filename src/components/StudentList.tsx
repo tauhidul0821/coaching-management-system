@@ -2,9 +2,15 @@
 import React, { useState } from 'react';
 import { IUser } from '@/types/user';
 import Link from 'next/link';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation';
 
 const StudentTableRow = ({ id, student }: { id: number; student: IUser }) => {
+  const router = useRouter();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [selectedStudentId, setSelectedStudentId] = useState<string | null>(null);
 
   const openModal = (studentId: any) => {
@@ -17,10 +23,23 @@ const StudentTableRow = ({ id, student }: { id: number; student: IUser }) => {
     setSelectedStudentId(null);
   };
 
-  const onDeleteStudent = () => {
+  const onDeleteStudent = async () => {
+    setLoading(true);
     console.log(`Deleting student with ID: ${selectedStudentId}`);
-    // Add your delete logic here, such as calling an API
-    closeModal();
+
+    try {
+      const res = await axios.delete(`/api/student/${selectedStudentId}`);
+      if (res.status === 200) {
+        toast.success('Student Deleted successful.');
+        // router.refresh();
+        // location.reload();
+      }
+    } catch (err: unknown) {
+      toast.error('An error occurred while deleting student');
+    } finally {
+      setLoading(false);
+      closeModal();
+    }
   };
 
   const tableDataClass = 'py-4 px-6 text-sm text-gray-700';
@@ -30,16 +49,9 @@ const StudentTableRow = ({ id, student }: { id: number; student: IUser }) => {
         <td className={tableDataClass}>{id + 1}</td>
         <td className={tableDataClass}>{student?.name}</td>
         <td className={tableDataClass}>{student?.email}</td>
-        <td className={tableDataClass}>10th Grade</td>
-        <td className={tableDataClass}>Math, Science, English</td>
+        <td className={tableDataClass}>{student?.grade ? student?.grade : 'N/A'}</td>
+        <td className={tableDataClass}>{student?.subject ? student?.subject : 'N/A'}</td>
         <td className="py-4 px-6 text-sm text-center">
-          {/* <Link
-            href={`/dashboard/teachers/students/details/${student?._id}`}
-            className="bg-green-500 text-white px-4 py-2 rounded mr-2 hover:bg-green-600"
-          >
-            Details
-          </Link> */}
-
           <Link
             href={`/dashboard/teachers/students/edit/${student?._id}`}
             className="bg-blue-500 text-white px-4 py-2 rounded mr-2 hover:bg-blue-600"

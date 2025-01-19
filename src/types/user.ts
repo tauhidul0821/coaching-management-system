@@ -9,6 +9,6 @@ export interface IUser {
   name: string;
   role: string;
   email: string;
-  class?: string;
-  subjects?: string;
+  grade?: string;
+  subject?: string;
 }
