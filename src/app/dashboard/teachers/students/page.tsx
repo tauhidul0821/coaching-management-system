@@ -63,13 +63,6 @@ const StudentList = () => {
           </div>
 
           <div className="">
-            {/* <Link
-              href="/dashboard/teachers/students/add"
-              className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600"
-            >
-              Add Students
-            </Link> */}
-
             <table className="min-w-full bg-white border border-gray-200 shadow-md rounded-lg">
               <thead>
                 <tr className="bg-gray-200">
