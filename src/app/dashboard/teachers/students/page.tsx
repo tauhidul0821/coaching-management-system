@@ -3,26 +3,24 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import StudentTableRow from '@/components/StudentList';
 import Spinner from '@/components/Spinner';
+import Link from 'next/link';
 
 const StudentList = () => {
   const [loading, setLoading] = useState(true);
   const [students, setStudents] = useState([]);
 
-  const getAllStudents = async () => {
-    try {
-      setLoading(true);
-      const response: any = await axios.get('/api/student');
-      console.log(' response:-  ', response);
-      setStudents(response.data.data);
-      console.log('after set students:-  ', students);
-    } catch (error: any) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const getAllStudents = async () => {
+      try {
+        const response: any = await axios.get('/api/student');
+        setStudents(response.data.data);
+      } catch (error: any) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     getAllStudents();
   }, []);
   const tableHeaderClass = 'py-3 px-6 text-left text-sm font-medium text-gray-600';
@@ -33,8 +31,25 @@ const StudentList = () => {
     <>
       <div className="bg-gray-100 p-10">
         <div className="container mx-auto">
-          <h1 className="text-2xl font-bold mb-6">Students Table</h1>
-          <div className="overflow-x-auto">
+          <div>
+            <h1 className="float-left text-2xl font-bold mb-6 ">Students Table</h1>
+
+            <Link
+              href="/dashboard/teachers/students/add"
+              className="float-right bg-blue-600 text-white px-4 py-2 pb-2 rounded-lg hover:bg-blue-700 right"
+            >
+              Add New Student
+            </Link>
+          </div>
+
+          <div className="">
+            {/* <Link
+              href="/dashboard/teachers/students/add"
+              className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600"
+            >
+              Add Students
+            </Link> */}
+
             <table className="min-w-full bg-white border border-gray-200 shadow-md rounded-lg">
               <thead>
                 <tr className="bg-gray-200">
