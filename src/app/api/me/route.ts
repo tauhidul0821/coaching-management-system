@@ -19,7 +19,6 @@ export const POST = async (req: NextRequest) => {
   try {
     await connectDB();
     const { name, email } = await req.json();
-    console.log(name, email);
 
     // check if user already exists
     // const userExists = await User.findOne({ email });
@@ -29,7 +28,7 @@ export const POST = async (req: NextRequest) => {
 
     const userId = await getDataFromToken(req);
 
-    const updatedUser = await User.updateOne({ _id: userId }, { $set: { name, email } });
+    const updatedUser = await User.updateOne({ _id: userId }, { $set: { name } });
 
     return NextResponse.json({ message: 'User Updated', data: updatedUser }, { status: 201 });
   } catch (error: unknown) {
