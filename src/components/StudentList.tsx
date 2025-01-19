@@ -18,12 +18,12 @@ const StudentTableRow = ({ id, student }: { id: number; student: IUser }) => {
         <td className={tableDataClass}>10th Grade</td>
         <td className={tableDataClass}>Math, Science, English</td>
         <td className="py-4 px-6 text-sm text-center">
-          <Link
+          {/* <Link
             href={`/dashboard/teachers/students/details/${student?._id}`}
             className="bg-green-500 text-white px-4 py-2 rounded mr-2 hover:bg-green-600"
           >
             Details
-          </Link>
+          </Link> */}
 
           <Link
             href={`/dashboard/teachers/students/edit/${student?._id}`}

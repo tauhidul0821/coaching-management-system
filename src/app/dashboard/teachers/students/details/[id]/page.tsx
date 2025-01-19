@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 import Spinner from '@/components/Spinner';
 import { useRouter, useParams } from 'next/navigation';
@@ -12,20 +12,16 @@ interface Student {
   subjects: string[];
 }
 
-const StudentDetails = () => {
+const StudentDetails = async () => {
   const router = useRouter();
   const { id } = useParams();
-  console.log(id);
+  const [loading, setLoading] = React.useState(true);
 
-  const [loading, setLoading] = useState(false);
-  const [studentDetails, setStudentDetails] = useState<Student>();
-
-  useEffect(() => {
+  React.useEffect(() => {
     const getStudentDetails = async () => {
       try {
-        const response: any = await axios.get(`api/student/${id}`);
+        const response: any = await axios.get(`api/student/getById/${id}`);
         console.log(response);
-        setStudentDetails(response);
       } catch (error: any) {
         console.error(error);
       } finally {
@@ -33,7 +29,7 @@ const StudentDetails = () => {
       }
     };
 
-    // getStudentDetails();
+    getStudentDetails();
   }, []);
 
   if (loading) return <Spinner loading={loading} />;
@@ -43,11 +39,11 @@ const StudentDetails = () => {
       <div className="bg-gray-100">
         <div className="p-8">
           <div className="bg-white shadow-md rounded-lg p-6 max-w-3xl mx-auto">
-            <h2 className="text-2xl font-bold text-gray-700 mb-4">Jhon Do {id}</h2>
+            <h2 className="text-2xl font-bold text-gray-700 mb-4">{'John Doe'}</h2>
             <div className="space-y-4">
               <div className="flex justify-between items-center">
                 <p className="text-gray-600 font-medium">Email:</p>
-                <p className="text-gray-700">John@gmail.com</p>
+                <p className="text-gray-700">{'john@gmail.com'}</p>
               </div>
               <div className="flex justify-between items-center">
                 <p className="text-gray-600 font-medium">Grade:</p>
