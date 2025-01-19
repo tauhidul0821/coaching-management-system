@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teacher Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 min-h-screen">
+    <header class="bg-blue-600 text-white py-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-2xl font-bold">Teacher Dashboard</h1>
+        <button class="bg-blue-700 hover:bg-blue-800 px-4 py-2 rounded">Logout</button>
+      </div>
+    </header>
+
+    <main class="container mx-auto mt-8 px-4">
+      <!-- Create Course Section -->
+      <section class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-xl font-bold mb-4">Create a New Course</h2>
+        <form id="create-course-form" class="space-y-4">
+          <div>
+            <label for="courseName" class="block text-gray-700 font-medium">Course Name</label>
+            <input
+              type="text"
+              id="courseName"
+              name="courseName"
+              placeholder="Enter course name"
+              class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            />
+          </div>
+          <div>
+            <label for="courseDescription" class="block text-gray-700 font-medium">Course Description</label>
+            <textarea
+              id="courseDescription"
+              name="courseDescription"
+              placeholder="Enter course description"
+              class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            ></textarea>
+          </div>
+          <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+            Create Course
+          </button>
+        </form>
+      </section>
+
+      <!-- Courses List Section -->
+      <section class="mt-10 bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-xl font-bold mb-4">Manage Courses</h2>
+        <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+          <thead class="bg-gray-200 text-gray-700">
+            <tr>
+              <th class="px-4 py-2 text-left">Course Name</th>
+              <th class="px-4 py-2 text-left">Description</th>
+              <th class="px-4 py-2 text-left">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="course-list">
+            <tr class="border-b">
+              <td class="px-4 py-2">Math</td>
+              <td class="px-4 py-2">Basic Mathematics Course</td>
+              <td class="px-4 py-2">
+                <button class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600">Edit</button>
+                <button class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">Delete</button>
+              </td>
+            </tr>
+            <!-- Add more courses dynamically here -->
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-4 mt-10">
+      <div class="container mx-auto text-center">
+        <p>&copy; 2025 Teacher Dashboard. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Edit Student</title>
+  </head>
+  <body class="bg-gray-100">
+    <div class="max-w-4xl mx-auto mt-10 bg-white shadow-md rounded-lg p-8">
+      <h1 class="text-2xl font-bold text-gray-800 mb-4">Edit Student</h1>
+      <form action="/api/student/update" method="POST" class="space-y-6">
+        <div>
+          <label for="name" class="block text-gray-600 font-semibold">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value="Md. Tauhidul Islam"
+            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-300"
+          />
+        </div>
+        <div>
+          <label for="email" class="block text-gray-600 font-semibold">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value="student@yopmail.com"
+            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-300"
+          />
+        </div>
+        <div>
+          <label for="className" class="block text-gray-600 font-semibold">Class Name</label>
+          <input
+            type="text"
+            id="className"
+            name="className"
+            value="10th Grade"
+            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-300"
+          />
+        </div>
+        <div>
+          <label for="subjects" class="block text-gray-600 font-semibold">Subjects</label>
+          <input
+            type="text"
+            id="subjects"
+            name="subjects"
+            value="Math, Science, English"
+            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-300"
+          />
+        </div>
+        <div class="mt-6 flex justify-end space-x-4">
+          <button type="submit" class="bg-green-500 text-white px-6 py-2 rounded-md hover:bg-green-600">Save</button>
+          <a href="/students.html" class="bg-gray-500 text-white px-6 py-2 rounded-md hover:bg-gray-600"> Cancel </a>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

@@ -19,12 +19,13 @@ export const POST = async (req: NextRequest) => {
   try {
     await connectDB();
     const { name, email } = await req.json();
+    console.log(name, email);
 
     // check if user already exists
-    const userExists = await User.findOne({ email });
-    if (userExists) {
-      return NextResponse.json({ message: 'User already exists' }, { status: 400 });
-    }
+    // const userExists = await User.findOne({ email });
+    // if (userExists) {
+    //   return NextResponse.json({ message: 'User already exists' }, { status: 400 });
+    // }
 
     const userId = await getDataFromToken(req);
 
