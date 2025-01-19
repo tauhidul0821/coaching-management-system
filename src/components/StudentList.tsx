@@ -6,7 +6,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 
-const StudentTableRow = ({ id, student }: { id: number; student: IUser }) => {
+const StudentTableRow = ({ id, student, onDelete }: { id: number; student: IUser; onDelete: Function }) => {
   const router = useRouter();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,23 +23,8 @@ const StudentTableRow = ({ id, student }: { id: number; student: IUser }) => {
     setSelectedStudentId(null);
   };
 
-  const onDeleteStudent = async () => {
-    setLoading(true);
-    console.log(`Deleting student with ID: ${selectedStudentId}`);
-
-    try {
-      const res = await axios.delete(`/api/student/${selectedStudentId}`);
-      if (res.status === 200) {
-        toast.success('Student Deleted successful.');
-        // router.refresh();
-        // location.reload();
-      }
-    } catch (err: unknown) {
-      toast.error('An error occurred while deleting student');
-    } finally {
-      setLoading(false);
-      closeModal();
-    }
+  const handleDelete = () => {
+    onDelete(student._id);
   };
 
   const tableDataClass = 'py-4 px-6 text-sm text-gray-700';
@@ -77,7 +62,7 @@ const StudentTableRow = ({ id, student }: { id: number; student: IUser }) => {
               <button className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400" onClick={closeModal}>
                 Cancel
               </button>
-              <button className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600" onClick={onDeleteStudent}>
+              <button className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600" onClick={handleDelete}>
                 Delete
               </button>
             </div>
