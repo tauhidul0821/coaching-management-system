@@ -17,20 +17,7 @@ const StudentDetails = async () => {
   const { id } = useParams();
   const [loading, setLoading] = React.useState(true);
 
-  React.useEffect(() => {
-    const getStudentDetails = async () => {
-      try {
-        const response: any = await axios.get(`api/student/getById/${id}`);
-        console.log(response);
-      } catch (error: any) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    getStudentDetails();
-  }, []);
+  React.useEffect(() => {}, []);
 
   if (loading) return <Spinner loading={loading} />;
 
@@ -39,11 +26,11 @@ const StudentDetails = async () => {
       <div className="bg-gray-100">
         <div className="p-8">
           <div className="bg-white shadow-md rounded-lg p-6 max-w-3xl mx-auto">
-            <h2 className="text-2xl font-bold text-gray-700 mb-4">{'John Doe'}</h2>
+            <h2 className="text-2xl font-bold text-gray-700 mb-4">John Doe</h2>
             <div className="space-y-4">
               <div className="flex justify-between items-center">
                 <p className="text-gray-600 font-medium">Email:</p>
-                <p className="text-gray-700">{'john@gmail.com'}</p>
+                <p className="text-gray-700">john@gmail.com</p>
               </div>
               <div className="flex justify-between items-center">
                 <p className="text-gray-600 font-medium">Grade:</p>
