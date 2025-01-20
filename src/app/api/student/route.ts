@@ -35,8 +35,11 @@ export const POST = async (req: NextRequest) => {
     const { name, email, grade, subject } = await req.json();
 
     const temporaryPassword = Math.floor(100000 + Math.random() * 900000);
+    const commonPassword = '123456';
 
-    const hashedPassword = await bcrypt.hash(temporaryPassword.toString(), 10);
+    // TODO: next step is to send email to the user with the temporary password
+
+    const hashedPassword = await bcrypt.hash(commonPassword, 10);
 
     const payload = {
       name,
