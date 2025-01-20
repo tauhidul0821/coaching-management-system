@@ -1,4 +1,4 @@
-## [Website link ](https://coaching-management-system-nine.vercel.app)
+## Website link please [click here](https://coaching-management-system-nine.vercel.app)
 
 ## Getting Started
 ### step 1: Go to coaching-management-system folder and install package using this command
@@ -30,7 +30,7 @@ NEXTAUTH_URL_INTERNAL=http://localhost:3000
 NEXTAUTH_SECRET=your_secret_key
 ```
 
-### step 5: create secret key use this command open your terminal or write any string or number without space
+### step 5: create secret key use this command open your terminal or write any string or character without space
 ```bash
 openssl rand -base64 32
 ```
