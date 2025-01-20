@@ -4,6 +4,8 @@ import axios from 'axios';
 import StudentTableRow from '@/components/StudentList';
 import Spinner from '@/components/Spinner';
 import Link from 'next/link';
+import { toast } from 'react-toastify';
+import { IUser } from '@/types/user';
 
 const StudentList = () => {
   const [loading, setLoading] = useState(true);
@@ -23,6 +25,22 @@ const StudentList = () => {
 
     getAllStudents();
   }, []);
+
+  const handleDelete = async (studentId: string) => {
+    setLoading(true);
+
+    try {
+      const res = await axios.delete(`/api/student/${studentId}`);
+      if (res.status === 200) {
+        toast.success('Student Deleted successful.');
+        setStudents((prevStudents) => prevStudents.filter((student: IUser) => student._id !== studentId));
+      }
+    } catch (err: unknown) {
+      toast.error('An error occurred while deleting student');
+    } finally {
+      setLoading(false);
+    }
+  };
   const tableHeaderClass = 'py-3 px-6 text-left text-sm font-medium text-gray-600';
 
   if (loading) return <Spinner loading={loading} />;
@@ -43,13 +61,6 @@ const StudentList = () => {
           </div>
 
           <div className="">
-            {/* <Link
-              href="/dashboard/teachers/students/add"
-              className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600"
-            >
-              Add Students
-            </Link> */}
-
             <table className="min-w-full bg-white border border-gray-200 shadow-md rounded-lg">
               <thead>
                 <tr className="bg-gray-200">
@@ -63,7 +74,7 @@ const StudentList = () => {
               </thead>
               <tbody>
                 {students.map((student: any, index: number) => (
-                  <StudentTableRow student={student} id={index} key={index} />
+                  <StudentTableRow student={student} id={index} key={index} onDelete={handleDelete} />
                 ))}
               </tbody>
             </table>

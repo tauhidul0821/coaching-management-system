@@ -18,6 +18,14 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    grade: {
+      type: String,
+      required: false,
+    },
+    subject: {
+      type: String,
+      required: false,
+    },
   },
   { timestamps: true },
 );

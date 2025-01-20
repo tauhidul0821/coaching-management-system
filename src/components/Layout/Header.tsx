@@ -5,6 +5,8 @@ import Link from 'next/link';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { IProfile } from '@/types/user';
+import Image from 'next/image';
+import profilePicture from '@/assets/images/profile2.jpg';
 
 const Header = ({ profileInfo }: { profileInfo: IProfile }) => {
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
@@ -34,7 +36,8 @@ const Header = ({ profileInfo }: { profileInfo: IProfile }) => {
             onClick={() => setIsProfileMenuOpen((prev) => !prev)}
           >
             <span className="hidden sm:block font-medium text-gray-700">{profileInfo ? profileInfo?.name : ''}</span>
-            <img src="https://via.placeholder.com/40" alt="Avatar" className="w-10 h-10 rounded-full" />
+
+            <Image className="h-10 w-auto" src={profilePicture} height={10} width={10} alt="alt" />
           </button>
           {isProfileMenuOpen && (
             <div

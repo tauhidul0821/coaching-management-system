@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 py-10">
+    <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+      <div class="bg-blue-500 px-6 py-4">
+        <h1 class="text-white text-2xl font-bold">Student Details</h1>
+      </div>
+      <div class="p-6 space-y-4">
+        <div class="flex items-center">
+          <label class="w-1/4 font-medium text-gray-600">Name:</label>
+          <p class="w-3/4 text-gray-800">John Doe</p>
+        </div>
+        <div class="flex items-center">
+          <label class="w-1/4 font-medium text-gray-600">Email:</label>
+          <p class="w-3/4 text-gray-800">johndoe@example.com</p>
+        </div>
+        <div class="flex items-center">
+          <label class="w-1/4 font-medium text-gray-600">Grade:</label>
+          <p class="w-3/4 text-gray-800">10</p>
+        </div>
+        <div class="flex items-center">
+          <label class="w-1/4 font-medium text-gray-600">Subject:</label>
+          <p class="w-3/4 text-gray-800">Math, Science</p>
+        </div>
+      </div>
+      <div class="bg-gray-100 px-6 py-4 flex justify-end">
+        <button class="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600">Edit</button>
+        <button class="bg-red-500 text-white px-4 py-2 ml-2 rounded shadow hover:bg-red-600">Delete</button>
+      </div>
+    </div>
+  </body>
+</html>

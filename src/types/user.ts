@@ -5,10 +5,10 @@ export interface IProfile {
 }
 
 export interface IUser {
-  _id?: number;
+  _id?: string;
   name: string;
   role: string;
   email: string;
-  class?: string;
-  subjects?: string;
+  grade?: string;
+  subject?: string;
 }

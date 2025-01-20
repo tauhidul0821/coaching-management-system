@@ -40,7 +40,7 @@ const LoginForm = () => {
         router.push('/dashboard');
       }
     } catch (err: any) {
-      toast.error('An error occurred during login.', err);
+      setError(err.response.data.message);
     } finally {
       setLoading(false);
     }
@@ -90,7 +90,7 @@ const LoginForm = () => {
             </div>
           </div>
 
-          {error && <div className="bg-red-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-2">{error}</div>}
+          {error && <div className="bg-red-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-1 mb-2">{error}</div>}
 
           <button
             disabled={loading}

@@ -1,81 +1,44 @@
 'use client';
+
 import React from 'react';
-import axios from 'axios';
-import Spinner from '@/components/Spinner';
 import { useRouter, useParams } from 'next/navigation';
+import Spinner from '@/components/Spinner';
+import { fetchStudentDetails } from '@/utilities/FetchStudentDetails';
 
-interface Student {
-  id: number;
-  name: string;
-  email: string;
-  className: string;
-  subjects: string[];
-}
-
-const StudentDetails = async () => {
+const StudentDetails = () => {
   const router = useRouter();
   const { id } = useParams();
-  const [loading, setLoading] = React.useState(true);
-
-  React.useEffect(() => {}, []);
+  const { student, loading } = fetchStudentDetails(id);
 
   if (loading) return <Spinner loading={loading} />;
 
   return (
     <>
-      <div className="bg-gray-100">
-        <div className="p-8">
-          <div className="bg-white shadow-md rounded-lg p-6 max-w-3xl mx-auto">
-            <h2 className="text-2xl font-bold text-gray-700 mb-4">John Doe</h2>
-            <div className="space-y-4">
-              <div className="flex justify-between items-center">
-                <p className="text-gray-600 font-medium">Email:</p>
-                <p className="text-gray-700">john@gmail.com</p>
-              </div>
-              <div className="flex justify-between items-center">
-                <p className="text-gray-600 font-medium">Grade:</p>
-                <p className="text-gray-700">A+</p>
-              </div>
+      <div className="bg-gray-100 py-10">
+        <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+          <div className="bg-blue-500 px-6 py-4">
+            <h1 className="text-white text-2xl font-bold">Student Details</h1>
+          </div>
+          <div className="p-6 space-y-4">
+            <div className="flex items-center">
+              <label className="w-1/4 font-medium text-gray-600">Name:</label>
+              <p className="w-3/4 text-gray-800">{student?.name}</p>
+            </div>
+            <div className="flex items-center">
+              <label className="w-1/4 font-medium text-gray-600">Email:</label>
+              <p className="w-3/4 text-gray-800">{student?.email}</p>
+            </div>
+            <div className="flex items-center">
+              <label className="w-1/4 font-medium text-gray-600">Grade:</label>
+              <p className="w-3/4 text-gray-800">{`${student?.grade ? `${student.grade}th class` : 'N/A'}`}</p>
+            </div>
+            <div className="flex items-center">
+              <label className="w-1/4 font-medium text-gray-600">Subject:</label>
+              <p className="w-3/4 text-gray-800">{student?.subject}</p>
             </div>
           </div>
-
-          <div className="bg-white shadow-md rounded-lg p-6 max-w-3xl mx-auto mt-8">
-            <h3 className="text-xl font-semibold text-gray-700 mb-4">Academic Records</h3>
-            <table className="min-w-full table-auto border-collapse border border-gray-300">
-              <thead>
-                <tr className="bg-gray-100">
-                  <th className="border border-gray-300 px-4 py-2 text-left">Subject</th>
-                  <th className="border border-gray-300 px-4 py-2 text-left">Score</th>
-                  <th className="border border-gray-300 px-4 py-2 text-left">Grade</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="border border-gray-300 px-4 py-2">Mathematics</td>
-                  <td className="border border-gray-300 px-4 py-2">95</td>
-                  <td className="border border-gray-300 px-4 py-2">A</td>
-                </tr>
-                <tr>
-                  <td className="border border-gray-300 px-4 py-2">Science</td>
-                  <td className="border border-gray-300 px-4 py-2">88</td>
-                  <td className="border border-gray-300 px-4 py-2">B+</td>
-                </tr>
-                <tr>
-                  <td className="border border-gray-300 px-4 py-2">English</td>
-                  <td className="border border-gray-300 px-4 py-2">92</td>
-                  <td className="border border-gray-300 px-4 py-2">A</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div className="max-w-3xl mx-auto mt-8 flex justify-end space-x-4">
-            <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600">
-              Edit Details
-            </button>
-            <button className="bg-red-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-red-600">
-              Delete Student
-            </button>
+          <div className="bg-gray-100 px-6 py-4 flex justify-end">
+            <button className="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600">Edit</button>
           </div>
         </div>
       </div>
