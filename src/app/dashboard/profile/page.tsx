@@ -77,6 +77,7 @@ const profilePages = () => {
                 type="email"
                 id="email"
                 name="email"
+                disabled={true} // This field is disabled, user can't change email address
                 required
                 onChange={handleChange}
                 defaultValue={profile.email}
