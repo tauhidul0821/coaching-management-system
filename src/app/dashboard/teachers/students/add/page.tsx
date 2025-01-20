@@ -26,7 +26,6 @@ const AddStudent = () => {
       grade,
       subject,
     };
-    console.log('before posting :- ', data);
 
     try {
       const res = await axios.post('/api/student', data);

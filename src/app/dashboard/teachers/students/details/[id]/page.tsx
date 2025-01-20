@@ -1,33 +1,14 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
+import React from 'react';
 import { useRouter, useParams } from 'next/navigation';
-import { toast } from 'react-toastify';
-import axios from 'axios';
 import Spinner from '@/components/Spinner';
+import { fetchStudentDetails } from '@/utilities/FetchStudentDetails';
 
 const StudentDetails = () => {
   const router = useRouter();
   const { id } = useParams();
-  const [loading, setLoading] = React.useState(true);
-  const [student, setStudent] = useState({ name: '', email: '', grade: '', subject: '' });
-
-  useEffect(() => {
-    const getStudentDetails = async () => {
-      try {
-        const response: any = await axios.get(`/api/student/${id}`);
-        console.log(response.data.data);
-        setStudent(response.data.data);
-      } catch (error: any) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    getStudentDetails();
-  }, []);
+  const { student, loading } = fetchStudentDetails(id);
 
   if (loading) return <Spinner loading={loading} />;
 
@@ -58,7 +39,6 @@ const StudentDetails = () => {
           </div>
           <div className="bg-gray-100 px-6 py-4 flex justify-end">
             <button className="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600">Edit</button>
-            <button className="bg-red-500 text-white px-4 py-2 ml-2 rounded shadow hover:bg-red-600">Delete</button>
           </div>
         </div>
       </div>

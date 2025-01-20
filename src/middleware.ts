@@ -8,7 +8,7 @@ export function middleware(request: NextRequest) {
 
   const token = request.cookies.get('token')?.value || '';
   const decodedToken = decodeToken(token);
-  console.log('decodedToken:', decodedToken);
+  // console.log('decodedToken:', decodedToken);
 
   if (isPublicPath && token) {
     return NextResponse.redirect(new URL('/dashboard', request.nextUrl));

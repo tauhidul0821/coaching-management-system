@@ -15,7 +15,6 @@ const StudentList = () => {
     const getAllStudents = async () => {
       try {
         const response: any = await axios.get('/api/student');
-        console.log(response.data.data);
         setStudents(response.data.data);
       } catch (error: any) {
         console.error(error);
@@ -29,7 +28,6 @@ const StudentList = () => {
 
   const handleDelete = async (studentId: string) => {
     setLoading(true);
-    console.log(`Deleting student with ID: ${studentId}`);
 
     try {
       const res = await axios.delete(`/api/student/${studentId}`);

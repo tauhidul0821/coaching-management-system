@@ -18,7 +18,6 @@ const EditStudent = () => {
     const getStudentDetails = async () => {
       try {
         const response: any = await axios.get(`/api/student/${id}`);
-        console.log(response.data.data);
         setStudent(response.data.data);
       } catch (error: any) {
         console.error(error);
@@ -37,8 +36,6 @@ const EditStudent = () => {
       setError('Name and email are necessary.');
       return;
     }
-
-    console.log('before posting :- ', student);
 
     try {
       const res = await axios.put(`/api/student/${id}`, student);
